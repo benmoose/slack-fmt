@@ -7,3 +7,7 @@ export interface IFormatter {
 export interface IController {
   json: IFormatter
 }
+
+export interface IMessageConfig {
+  ephemeral?: boolean
+}
