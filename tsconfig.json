@@ -1,18 +1,13 @@
 {
   "compilerOptions": {
-    "pretty": true,
-    "allowJs": true,
     "target": "es6",
     "module": "commonjs",
-    "outDir": "dist",
-    "lib": [
-      "es2015"
-    ]
+    "outDir": "dist"
   },
   "exclude": [
     "node_modules"
   ],
   "include": [
-    "src/**/*.ts"
+    "src/**/*"
   ]
 }
