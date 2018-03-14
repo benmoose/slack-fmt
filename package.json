@@ -1,0 +1,29 @@
+{
+  "name": "formatter",
+  "version": "0.0.1",
+  "description": "A Slack bot for formatting messages",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./dist",
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
+    "build": "npm run tsc",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "slack-bot",
+    "node"
+  ],
+  "author": "Ben Hadfield <benjohnhadfield@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "@types/node": "^9.4.7",
+    "nodemon": "^1.17.2",
+    "typescript": "^2.7.2"
+  }
+}
