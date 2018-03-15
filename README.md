@@ -4,6 +4,8 @@
 
 A helpful Slack bot for formatting JSON strings 🙃
 
+Slash command `/fmt [spaces] json`.
+
 ### Usage
 
 Simply type
@@ -58,10 +60,15 @@ You can find the rules for relaxed JSON [here](https://github.com/rjrodger/jsoni
 For example
 
 ```
-/fmt foo: bar
+/fmt cats: [socks, spice, scratch, mister purrfect]
 
 {
-  "foo": "bar"
+  "cats": [
+    "socks",
+    "spice",
+    "scratch",
+    "mister purrfect"
+  ]
 }
 ```
 
