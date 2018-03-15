@@ -1,4 +1,4 @@
-const jsonic = require('jsonic')
+import * as jsonic from 'jsonic'
 
 /**
  * Takes a string and returns a copy with preceding / trailing quotes removed.
