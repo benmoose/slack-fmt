@@ -7,9 +7,7 @@ import { IMessageConfig, IArguments } from '../../common/types'
  * @param {string} msg
  */
 export function formatAsCodeBlock (msg: string): string {
-  return `
-    \`\`\`${msg}\`\`\`
-  `
+  return `\`\`\`${msg}\`\`\``
 }
 
 /**
