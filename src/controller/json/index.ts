@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 
 import { IFormatter } from '../../common/types'
-import { prepareString } from '../../utils/string'
+import { prepareString, parseJsonString } from '../../utils/string'
 import { createMessage, formatAsCodeBlock, parseMessageArgs } from '../../utils/msg'
 
 /**
@@ -17,7 +17,7 @@ const format = (req: Request, res: Response) => {
 
   try {
     // try to parse the JSON
-    const parsed = JSON.parse(text)
+    const parsed = parseJsonString(text)
     // format the parsed JSON with tabs
     const formattedJson = JSON.stringify(parsed, null, ' '.repeat(args.spaces))
     // wrap in markdown codeblock characters

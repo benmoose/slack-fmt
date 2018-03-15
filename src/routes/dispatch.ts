@@ -23,9 +23,11 @@ const dispatcher = (req: Request, res: Response): void => {
       // res.redirect('/format')
       break;
     }
+    default: {
+      res.status(400).send('Unknown command :cry:')
+      break;
+    }
   }
-
-  res.status(400).send('Unknown command.')
 }
 
 export default dispatcher

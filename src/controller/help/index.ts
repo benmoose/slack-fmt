@@ -8,7 +8,7 @@ const format = (req: Request, res: Response) => {
 \t\`spaces\` _(optional, default 2)_
 \t\tnumber of spaces to indent by. If 0 then the message is not formatted
 \t\`json\`
-\t\tjson string to format (must be valid JSON).
+\t\tjson string to format, either strict or relaxed JSON
   `
   const message = createMessage(helpText, {
     ephemeral: true
