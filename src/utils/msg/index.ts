@@ -1,4 +1,4 @@
-import { IMessageConfig } from '../../common/types'
+import { IMessageConfig, IArguments } from '../../common/types'
 
 /**
  * Prepares a string for sending to Slack.
@@ -23,5 +23,24 @@ export function createMessage (msg: string, config: IMessageConfig = {}): object
   return {
     text: msg,
     response_type: ephemeral ? 'ephemeral' : 'in_channel'
+  }
+}
+
+/**
+ * Parses out the parameters send in the message, returning them as an array.
+ * @param msg message to parse
+ */
+export function parseMessageArgs (msg: string): IArguments {
+  // arg1 -> spaces
+  const arg1 = msg.match(/^\d+/)
+  // arg2 -> text to format
+  const arg2 = msg.replace(/^\d+/, '')
+
+  // format arg1 as a number if it exists
+  const spaces = arg1 ? parseInt(arg1[0]) : 2
+
+  return {
+    spaces: spaces,
+    text: arg2
   }
 }

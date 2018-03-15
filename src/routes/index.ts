@@ -1,8 +1,11 @@
-import controller from '../controller'
+import { Router } from 'express'
+// import controller from '../controller'
+import dispatcher from './dispatch'
 
-const routes = (app) => {
-  app.route('/slack/slash-commands/json')
-    .post(controller.json.format)
-}
+const router = Router()
 
-export default routes
+router.post('/', dispatcher)
+// router.post('/help', controller.help.format)
+// router.post('/json', controller.json.format)
+
+export default router
