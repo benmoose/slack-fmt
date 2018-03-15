@@ -17,7 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // register routes
-app.use('/slack/slash-commands', routes)
+app.use('/slack/slash-commands', routes.slashCommands)
+app.use('/slack/oauth', routes.oauth)
 
 app.listen(port, () => {
   console.log(`listening on :${port}`)

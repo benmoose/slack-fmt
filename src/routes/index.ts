@@ -1,11 +1,7 @@
-import { Router } from 'express'
+import slashCommands from './slashCommands'
+import oauth from './oauth'
 
-import { checkVerificationToken } from '../utils/request'
-import dispatcher from './dispatch'
-
-const router = Router()
-
-router.use(checkVerificationToken)
-router.post('/', dispatcher)
-
-export default router
+export default {
+  slashCommands,
+  oauth
+}

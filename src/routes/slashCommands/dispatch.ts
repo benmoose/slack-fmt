@@ -4,10 +4,10 @@
  */
 
 import { Request, Response } from 'express'
-import controller from '../controller'
+import controller from '../../controller'
 
-import { getRequestCommandType } from '../utils/request'
-import { CommandType } from '../common/types';
+import { getRequestCommandType } from '../../utils/request'
+import { CommandType } from '../../common/types'
 
 const dispatcher = (req: Request, res: Response): void => {
   const type = getRequestCommandType(req)
