@@ -6,7 +6,8 @@ export interface IFormatter {
 
 export interface IController {
   help: IFormatter,
-  json: IFormatter
+  json: IFormatter,
+  oauth
 }
 
 export interface IMessageConfig {
