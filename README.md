@@ -1,8 +1,9 @@
 # Slack Fmt
 
-> Not yet published to Slack, coming soon!
+> [View on Slack](https://moosesandbox.slack.com/apps/A9QSW4XSB-fmt?page=1)
+or [Install](https://16el4ez0sg.execute-api.eu-west-2.amazonaws.com/dev/oauth/direct-install) to your workspace
 
-A helpful Slack bot for formatting JSON strings 🙃
+**Fmt** is a helpful Slack bot for formatting JSON messages 🙃
 
 Slash command `/fmt [spaces] json`.
 
