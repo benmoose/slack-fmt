@@ -9,7 +9,7 @@ import { createMessage, formatAsCodeBlock, parseMessageArgs } from '../../utils/
  * @param {Request} req
  * @param {Response} res
  */
-const format = (req: Request, res: Response) => {
+const format = (req: Request, res: Response): Response => {
   // parse arguments from the incoming string
   const args = parseMessageArgs(req.body.text)
   // sanitise text to format
@@ -24,13 +24,13 @@ const format = (req: Request, res: Response) => {
     const formattedText = formatAsCodeBlock(formattedJson)
     // get the message object to send to Slack
     const message = createMessage(formattedText, { ephemeral: false })
-    res.json(message)
+    return res.json(message)
   } catch {
     // Parsing error, send back an error message to the user
     const message = createMessage('There was a syntax error in the JSON :cry:', {
       ephemeral: true
     })
-    res.json(message)
+    return res.json(message)
   }
 }
 
