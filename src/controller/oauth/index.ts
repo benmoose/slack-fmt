@@ -1,4 +1,4 @@
-import { URL, URLSearchParams } from 'url'
+import * as url from 'url'
 import axios from 'axios'
 import { Request, Response } from 'express'
 
@@ -47,13 +47,13 @@ const redirect = (req: Request, res: Response): Response => {
  */
 const directInstall = (req: Request, res: Response): void => {
   // build authorisation URL
-  const authoriseUrl = new URL(process.env.SLACK_OAUTH_AUTHORISATION_PAGE)
-  authoriseUrl.search = new URLSearchParams({
+  const authorizeUrl = url.parse(process.env.SLACK_OAUTH_AUTHORISATION_PAGE)
+  authorizeUrl.query = {
     client_id: process.env.SLACK_CLIENT_ID,
     scope: 'commands'
-  }).toString()
+  }
   // 302 to authorise endpoint
-  return res.redirect(authoriseUrl.href)
+  return res.redirect(url.format(authorizeUrl))
 }
 
 export default { redirect, directInstall }
