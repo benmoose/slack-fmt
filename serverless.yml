@@ -1,0 +1,23 @@
+service: fmt
+
+package:
+  exclude:
+    - src/**
+    - .git/**
+    - .env
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev
+  region: eu-west-2
+  versionFunctions: false
+
+functions:
+  app:
+    handler: index.handler
+    memorySize: 512
+    timeout: 3
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'

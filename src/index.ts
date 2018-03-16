@@ -1,4 +1,9 @@
+/**
+ * Serverless backend for FMT slash commands and OAUTH integration.
+ */
+
 import * as express from 'express'
+import * as serverless from 'serverless-http'
 import * as bodyParser from 'body-parser'
 
 import routes from './routes'
@@ -8,18 +13,14 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').load()
 }
 
-const port = process.env.PORT || 3000
-
 const app = express()
 
 // body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-// register routes
-app.use('/slack/slash-commands', routes.slashCommands)
-app.use('/slack/oauth', routes.oauth)
+// install routes
+app.use('/oauth', routes.oauth)
+app.use('/slash-commands', routes.slashCommands)
 
-app.listen(port, () => {
-  console.log(`listening on :${port}`)
-})
+module.exports.handler = serverless(app)

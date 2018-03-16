@@ -3,7 +3,8 @@ import { Request, Response } from 'express'
 import { IFormatter } from '../../common/types'
 import { createMessage, formatAsCodeBlock, parseMessageArgs } from '../../utils/msg'
 
-const format = (req: Request, res: Response) => {
+const format = (req: Request, res: Response): Response => {
+  // help message
   const helpText = `*To format a string* type \`/fmt [spaces] json\`.
 \t\`spaces\` _(optional, default 2)_
 \t\tnumber of spaces to indent by. If 0 then the message is not formatted
@@ -13,7 +14,7 @@ const format = (req: Request, res: Response) => {
   const message = createMessage(helpText, {
     ephemeral: true
   })
-  res.json(message)
+  return res.json(message)
 }
 
 const help: IFormatter = { format }
