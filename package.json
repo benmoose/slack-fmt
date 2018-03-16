@@ -12,6 +12,9 @@
     "deploy": "npm run build && sls deploy",
     "test": "mocha dist/**/*spec.js"
   },
+  "engines": {
+    "node": "6.10"
+  },
   "keywords": [
     "slack-bot",
     "node"
