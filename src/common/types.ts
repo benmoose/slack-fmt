@@ -19,6 +19,7 @@ export interface IMessageConfig {
  */
 export interface IArguments {
   spaces: number,
+  type: string,
   text: string
 }
 
