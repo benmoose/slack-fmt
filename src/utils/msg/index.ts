@@ -32,13 +32,14 @@ export function parseMessageArgs (msg: string): IArguments {
   // arg1 -> spaces
   const arg1 = msg.match(/^\d+/)
   // arg2 -> text to format
-  const arg2 = msg.replace(/^\d+/, '')
+  const arg2 = msg.replace(/^\d+\s*/, '')
 
   // format arg1 as a number if it exists
   const spaces = arg1 ? parseInt(arg1[0]) : 2
 
   return {
     spaces: spaces,
+    type: 'json',
     text: arg2
   }
 }

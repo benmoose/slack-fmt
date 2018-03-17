@@ -4,12 +4,10 @@ package:
   exclude:
     - src/**
     - .git/**
-    - .env
 
 provider:
   name: aws
   runtime: nodejs6.10
-  stage: dev
   region: eu-west-2
   versionFunctions: false
 
