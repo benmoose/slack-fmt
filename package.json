@@ -2,6 +2,11 @@
   "name": "slack-formatter",
   "version": "0.0.1",
   "description": "A Slack bot for formatting messages",
+  "author": "Ben Hadfield <benjohnhadfield@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benjaminhadfield/slack-fmt.git"
+  },
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./dist",
@@ -19,7 +24,6 @@
     "slack-bot",
     "node"
   ],
-  "author": "Ben Hadfield <benjohnhadfield@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
