@@ -1,7 +1,8 @@
 import { Request, Response } from 'express'
 
 import { IFormatter } from '../../common/types'
-import { prepareString, parseJsonString } from '../../utils/string'
+import { prepareString } from '../../utils/string'
+import { parseJsonString } from '../../utils/parse'
 import { createMessage, formatAsCodeBlock, parseMessageArgs } from '../../utils/msg'
 
 /**

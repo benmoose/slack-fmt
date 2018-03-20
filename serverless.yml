@@ -7,6 +7,7 @@ package:
 
 provider:
   name: aws
+  stage: dev
   runtime: nodejs6.10
   region: eu-west-2
   versionFunctions: false
