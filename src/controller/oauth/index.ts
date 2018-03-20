@@ -1,4 +1,4 @@
-import * as url from 'url'
+const url = require('url')
 import axios from 'axios'
 import { Request, Response } from 'express'
 
@@ -10,14 +10,15 @@ const redirect = (req: Request, res: Response): Response => {
       message: 'Missing \'code\' parameter'
     })
   }
-  // prepare data to call Slack's API
-  const data = {
+  // prepare params to call Slack's API
+  const params = {
     code,
     client_id: process.env.SLACK_CLIENT_ID,
     client_secret: process.env.SLACK_SECRET
   }
   // call Slack oauth.access API
-  axios.post(process.env.SLACK_OAUTH_ACCESS_URL, data, {
+  axios.get(process.env.SLACK_OAUTH_ACCESS_URL, {
+    params,
     headers: {
       'Content-type': 'application/x-www-form-urlencoded'
     }
@@ -29,8 +30,9 @@ const redirect = (req: Request, res: Response): Response => {
         const accessToken = data.access_token
         // check response
         if (data.ok && data.access_token) {
-          // success!
-          return res.status(200).json({ message: 'App installed!' })
+          // success! redirect to FMT's website
+          // TODO: change this to redirect to the user's team
+          return res.redirect(process.env.FMT_SITE_URL)
         }
       }
       return res.status(400).json({
@@ -47,13 +49,16 @@ const redirect = (req: Request, res: Response): Response => {
  */
 const directInstall = (req: Request, res: Response): void => {
   // build authorisation URL
-  const authorizeUrl = url.parse(process.env.SLACK_OAUTH_AUTHORISATION_PAGE)
-  authorizeUrl.query = {
-    client_id: process.env.SLACK_CLIENT_ID,
-    scope: 'commands'
-  }
+  const authorizeUrl = url.format({
+    ...url.parse(process.env.SLACK_OAUTH_AUTHORISATION_PAGE),
+    query: {
+      client_id: process.env.SLACK_CLIENT_ID,
+      scope: 'commands'
+    }
+  })
+
   // 302 to authorise endpoint
-  return res.redirect(url.format(authorizeUrl))
+  return res.redirect(authorizeUrl)
 }
 
 export default { redirect, directInstall }
