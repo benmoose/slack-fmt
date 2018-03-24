@@ -1,5 +1,13 @@
 import { IMessageConfig } from '../../common/types'
 
+export function getFmtCommands (text: string): string[] {
+  const sep = /\s*(\r\n)*\/dfmt\s*/gi
+  const commands = text.split(sep)
+  return commands
+    .filter(cmd => !!cmd)
+    .map(cmd => cmd.trim())
+}
+
 /**
  * Prepares a string for sending to Slack.
  * Adds a new line at the beginning and wraps the message
@@ -7,7 +15,7 @@ import { IMessageConfig } from '../../common/types'
  * @param {string} msg
  */
 export function formatMessageText (text: string, tag?: string): string {
-  const wrappedTag = tag && `:label: *${tag}*`
+  const wrappedTag = tag && `*${tag}*`
   const wrappedText = `\`\`\`${text}\`\`\``
   return [wrappedTag, wrappedText]
     .filter(part => !!part)
