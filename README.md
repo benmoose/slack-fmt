@@ -7,6 +7,11 @@ or [Install](https://16el4ez0sg.execute-api.eu-west-2.amazonaws.com/dev/oauth/di
 
 Slash command `/fmt [spaces] json`.
 
+  - [Usage](#usage)
+  - [Customisation](#customisation)
+  - [Relaxed JSON Support](#relaxed-json-support)
+  - [Multiple Commands](#multiple-commands)
+
 ### Usage
 
 Simply type
@@ -32,7 +37,11 @@ and **Fmt** will respond with the JSON properly formatted.
 }
 ```
 
-By default **Fmt** will indent with two spaces. To change this, just enter the number of spaces you'd like with the `--indent` (or `-i`) flag.
+### Customisation
+
+#### Custom Indent Size
+
+By default **Fmt** will indent with two spaces. To change this, just enter the number of spaces you'd like with the `--indent`/`-i` flag.
 
 ```
 /fmt --indent 4 {"a": ["one", "two", "three", "four"]}
@@ -48,7 +57,9 @@ By default **Fmt** will indent with two spaces. To change this, just enter the n
 }
 ```
 
-You can also add a one word tag, which is displayed above the formatted response, with the `--tag` (or `-t`) flag.
+#### Add a Tag
+
+You can add a one word tag, which is displayed above the formatted response, with the `--tag`/`-t` flag.
 
 ```
 /fmt --tag Request {"data": [42, 189, 290]}
@@ -63,6 +74,8 @@ You can also add a one word tag, which is displayed above the formatted response
   ]
 }
 ```
+
+### Relaxed JSON Support
 
 **Fmt** can also handle relaxed JSON, thanks to the [jsonic](https://github.com/rjrodger/jsonic) library.
 
@@ -104,5 +117,31 @@ For example
             "job": "Central and Northern England RSM"
         }
     ]
+}
+```
+
+### Multiple Commands
+
+**Fmt** can handle multiple slash commands in one message,
+just begin each individual command with `/fmt`.
+
+This can be particularly useful when combine with tags, for example when
+sending request/response JSON.
+
+```
+/fmt -t request name: Hiccup /fmt -t response id: 1594, name: Hiccup
+```
+**request**
+```
+{
+  "name": "Hiccup"
+}
+```
+
+**response**
+```
+{
+  "id" 1594,
+  "name": "Hiccup"
 }
 ```
