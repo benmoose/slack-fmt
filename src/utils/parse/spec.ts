@@ -1,7 +1,7 @@
 import * as mocha from 'mocha'
 import { expect } from 'chai'
 
-import { parseJsonString } from './'
+import { parseJsonString, parseMessageArgs } from './'
 
 describe('test parseJsonString', function () {
   it('should parse strict JSON string to js object (1)', function () {
@@ -51,5 +51,52 @@ describe('test parseJsonString', function () {
   it('should throw SyntaxError when given invalid JSON (3)', function () {
     const msg = '{&p: 100}'
     expect(() => parseJsonString(msg)).to.throw(SyntaxError)
+  })
+})
+
+describe('test parseMessageArgs', function () {
+  it('should always return an object with IArgument keys', function () {
+    const actual = parseMessageArgs('')
+    expect(actual).to.have.all.keys('spaces', 'type', 'text')
+  })
+  it('should return correct args (1)', function () {
+    const msg = 'foo: bar'
+    const expected = {
+      spaces: 2,
+      type: 'json',
+      text: 'foo: bar'
+    }
+    const actual = parseMessageArgs(msg)
+    expect(actual).to.deep.equal(expected)
+  })
+  it('should return correct args (2)', function () {
+    const msg = '4 [{foo: bar}, {baz: bim}]'
+    const expected = {
+      spaces: 4,
+      type: 'json',
+      text: '[{foo: bar}, {baz: bim}]'
+    }
+    const actual = parseMessageArgs(msg)
+    expect(actual).to.deep.equal(expected)
+  })
+  it('should return correct args (3)', function () {
+    const msg = '10 a: b, c: d'
+    const expected = {
+      spaces: 10,
+      type: 'json',
+      text: 'a: b, c: d'
+    }
+    const actual = parseMessageArgs(msg)
+    expect(actual).to.deep.equal(expected)
+  })
+  it('should return correct args (4)', function () {
+    const msg = '0{"a": "b", "c": ["d", "e", "f"]}'
+    const expected = {
+      spaces: 0,
+      type: 'json',
+      text: '{"a": "b", "c": ["d", "e", "f"]}'
+    }
+    const actual = parseMessageArgs(msg)
+    expect(actual).to.deep.equal(expected)
   })
 })
