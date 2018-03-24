@@ -53,10 +53,8 @@ You can also add a one word tag, which is displayed above the formatted response
 ```
 /fmt --tag Request {"data": [42, 189, 290]}
 ```
-
+**Request**
 ```
-🏷 Request
-
 {
   "data": [
     42,
