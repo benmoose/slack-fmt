@@ -57,46 +57,51 @@ describe('test parseJsonString', function () {
 describe('test parseMessageArgs', function () {
   it('should always return an object with IArgument keys', function () {
     const actual = parseMessageArgs('')
-    expect(actual).to.have.all.keys('spaces', 'type', 'text')
+    expect(actual).to.have.all.keys('indent', 'type', 'text', 'tag')
   })
-  it('should return correct args (1)', function () {
+  it('should return default args', function () {
     const msg = 'foo: bar'
     const expected = {
-      spaces: 2,
-      type: 'json',
+      indent: 2,
       text: 'foo: bar'
     }
     const actual = parseMessageArgs(msg)
-    expect(actual).to.deep.equal(expected)
+    expect(actual).to.include(expected)
   })
-  it('should return correct args (2)', function () {
-    const msg = '4 [{foo: bar}, {baz: bim}]'
+  it('should return correct args with -i flag', function () {
+    const msg = '-i 4 [{foo: bar}, {baz: bim}]'
     const expected = {
-      spaces: 4,
-      type: 'json',
+      indent: 4,
       text: '[{foo: bar}, {baz: bim}]'
     }
     const actual = parseMessageArgs(msg)
-    expect(actual).to.deep.equal(expected)
+    expect(actual).to.include(expected)
   })
-  it('should return correct args (3)', function () {
-    const msg = '10 a: b, c: d'
+  it('should return correct args with --indent flag', function () {
+    const msg = '--indent 10 a: b, c: d'
     const expected = {
-      spaces: 10,
-      type: 'json',
+      indent: 10,
       text: 'a: b, c: d'
     }
     const actual = parseMessageArgs(msg)
-    expect(actual).to.deep.equal(expected)
+    expect(actual).to.include(expected)
   })
-  it('should return correct args (4)', function () {
-    const msg = '0{"a": "b", "c": ["d", "e", "f"]}'
+  it('should return correct args with floating point indent', function () {
+    const msg = '-i 1.598 {"a": "b", "c": ["d", "e", "f"]}'
     const expected = {
-      spaces: 0,
-      type: 'json',
+      indent: 1,
       text: '{"a": "b", "c": ["d", "e", "f"]}'
     }
     const actual = parseMessageArgs(msg)
-    expect(actual).to.deep.equal(expected)
+    expect(actual).to.include(expected)
+  })
+  it('should return correct args with -t flag', function () {
+    const msg = '-t request foo:bar'
+    const expected = {
+      indent: 2,
+      tag: 'request'
+    }
+    const actual = parseMessageArgs(msg)
+    expect(actual).to.include(expected)
   })
 })

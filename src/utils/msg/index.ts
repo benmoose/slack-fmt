@@ -6,8 +6,12 @@ import { IMessageConfig } from '../../common/types'
  * in multi-line code markdown.
  * @param {string} msg
  */
-export function formatAsCodeBlock (msg: string): string {
-  return `\`\`\`${msg}\`\`\``
+export function formatMessageText (text: string, tag?: string): string {
+  const wrappedTag = tag && `:label: *${tag}*`
+  const wrappedText = `\`\`\`${text}\`\`\``
+  return [wrappedTag, wrappedText]
+    .filter(part => !!part)
+    .join('\n')
 }
 
 /**

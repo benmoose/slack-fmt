@@ -18,7 +18,9 @@ export interface IMessageConfig {
  * Arguments object to the slash command
  */
 export interface IArguments {
-  spaces: number,
+  error?: Error,
+  tag?: string,
+  indent: number,
   type: string,
   text: string
 }
