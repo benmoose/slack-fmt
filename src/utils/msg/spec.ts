@@ -1,15 +1,23 @@
 import * as mocha from 'mocha'
 import { expect } from 'chai'
 
-import { formatAsCodeBlock } from './'
+import { formatMessageText } from './'
 
 describe('test formatAsCodeBlock', function () {
+
   it('should return wrapped in code block markdown', function () {
     const expected = {
-      single: '```code block```',
-      multi: `\`\`\`Line 1\nLine 2\`\`\``
+      single: '```abc d+```',
+      multi: '\`\`\`Line 1\nLine 2\`\`\`'
     }
-    expect(formatAsCodeBlock('code block')).to.equal(expected.single)
-    expect(formatAsCodeBlock(`Line 1\nLine 2`)).to.equal(expected.multi)
+    expect(formatMessageText('abc d+')).to.equal(expected.single)
+    expect(formatMessageText(`Line 1\nLine 2`)).to.equal(expected.multi)
+  })
+  it('should return code block with tag', function () {
+    const expected = (
+`:label: *tag*
+\`\`\`code block\`\`\``
+    )
+    expect(formatMessageText('code block', 'tag')).to.equal(expected)
   })
 })

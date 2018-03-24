@@ -26,6 +26,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "argparse": "^1.0.10",
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
