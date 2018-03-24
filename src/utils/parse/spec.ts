@@ -78,9 +78,9 @@ describe('test parseMessageArgs', function () {
     expect(actual).to.include(expected)
   })
   it('should return correct args with --indent flag', function () {
-    const msg = '--indent 10 a: b, c: d'
+    const msg = '--indent 8 a: b, c: d'
     const expected = {
-      indent: 10,
+      indent: 8,
       text: 'a: b, c: d'
     }
     const actual = parseMessageArgs(msg)

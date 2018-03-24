@@ -1,7 +1,7 @@
 import { IMessageConfig } from '../../common/types'
 
 export function getFmtCommands (text: string): string[] {
-  const sep = /\s*(\r\n)*\/dfmt\s*/gi
+  const sep = /\s*(\r\n)*\/fmt\s*/gi
   const commands = text.split(sep)
   return commands
     .filter(cmd => !!cmd)
