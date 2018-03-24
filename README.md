@@ -32,11 +32,12 @@ and **Fmt** will respond with the JSON properly formatted.
 }
 ```
 
-By default **Fmt** will indent with two spaces. To change this, just enter the number of spaces you'd prefer before the JSON string.
+By default **Fmt** will indent with two spaces. To change this, just enter the number of spaces you'd like with the `--indent` (or `-i`) flag.
 
 ```
-/fmt 4 {"a": ["one", "two", "three", "four"]}
-
+/fmt --indent 4 {"a": ["one", "two", "three", "four"]}
+```
+```
 {
     "a": [
         "one",
@@ -44,6 +45,24 @@ By default **Fmt** will indent with two spaces. To change this, just enter the n
         "three",
         "four"
     ]
+}
+```
+
+You can also add a one word tag, which is displayed above the formatted response, with the `--tag` (or `-t`) flag.
+
+```
+/fmt --tag Request {"data": [42, 189, 290]}
+```
+
+```
+🏷 Request
+
+{
+  "data": [
+    42,
+    189,
+    290
+  ]
 }
 ```
 
@@ -74,7 +93,7 @@ For example
 ```
 
 ```
-/fmt 4 cast: [{name: Belinda Blumenthal, job: Worldwide Sales Director of Steele's Pots & Pans}, {name: Ken Dewsbury, job: Central and Northern England RSM }]
+/fmt -i 4 cast: [{name: Belinda Blumenthal, job: Worldwide Sales Director of Steele's Pots & Pans}, {name: Ken Dewsbury, job: Central and Northern England RSM }]
 
 {
     "cast": [
