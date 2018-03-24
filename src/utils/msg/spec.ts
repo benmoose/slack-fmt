@@ -15,7 +15,7 @@ describe('test formatAsCodeBlock', function () {
   })
   it('should return code block with tag', function () {
     const expected = (
-`:label: *tag*
+`*tag*
 \`\`\`code block\`\`\``
     )
     expect(formatMessageText('code block', 'tag')).to.equal(expected)
