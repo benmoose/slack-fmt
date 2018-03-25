@@ -5,10 +5,10 @@ or [Install](https://16el4ez0sg.execute-api.eu-west-2.amazonaws.com/dev/oauth/di
 
 **Fmt** is a helpful Slack bot for formatting JSON messages 🙃
 
-Slash command `/fmt [spaces] json`.
+Slash command `/fmt [options] json`.
 
   - [Usage](#usage)
-  - [Customisation](#customisation)
+  - [Options](#options)
   - [Relaxed JSON Support](#relaxed-json-support)
   - [Multiple Commands](#multiple-commands)
 
@@ -37,11 +37,18 @@ and **Fmt** will respond with the JSON properly formatted.
 }
 ```
 
-### Customisation
+### Options
+
+| Option | Flag | Description |
+| ------ | ---- | ----------- |
+| [Custom indent size](#custom-indent-size) | `--indent` / `-i` | Specify the number of spaces to indent the formatted JSON with (default 2).
+| [Tag](#tagged-responses) | `--tag` / `-t` | Add a tag above the formatted JSON (useful for naming when sending multiple fomratted messages).
 
 #### Custom Indent Size
 
-By default **Fmt** will indent with two spaces. To change this, just enter the number of spaces you'd like with the `--indent`/`-i` flag.
+> `[--indent size] [-i size]`
+
+By default **Fmt** will indent with two spaces. To change this, specify the number of spaces you'd like with the `--indent` flag.
 
 ```
 /fmt --indent 4 {"a": ["one", "two", "three", "four"]}
@@ -57,9 +64,11 @@ By default **Fmt** will indent with two spaces. To change this, just enter the n
 }
 ```
 
-#### Add a Tag
+#### Tagged Responses
 
-You can add a one word tag, which is displayed above the formatted response, with the `--tag`/`-t` flag.
+> `[--tag tag] [-t tag]`
+
+You can add a one word tag, which is displayed above the formatted response, with the `--tag` flag.
 
 ```
 /fmt --tag Request {"data": [42, 189, 290]}
@@ -125,7 +134,7 @@ For example
 **Fmt** can handle multiple slash commands in one message,
 just begin each individual command with `/fmt`.
 
-This can be particularly useful when combine with tags, for example when
+This can be particularly useful when combined with tags, for example when
 sending request/response JSON.
 
 ```
