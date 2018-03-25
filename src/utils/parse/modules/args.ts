@@ -4,8 +4,11 @@ import { IArguments } from '../../../common/types'
 /**
  * Creates a parser capable of parsing any valid Fmt message.
  */
-function createArgumentParser (): ArgumentParser {
-  const parser = new ArgumentParser({ addHelp: false })
+export function createArgumentParser (): ArgumentParser {
+  const parser = new ArgumentParser({
+    prog: '/fmt',
+    addHelp: false
+  })
   // default error handler calls exit()
   // override this to throw error instead
   parser.error = (message) => {

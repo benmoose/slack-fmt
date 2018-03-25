@@ -38,9 +38,7 @@ const format = (req: Request, res: Response): Response => {
       responses.push(formattedText)
     } catch {
       // Parsing error, send back an error message to the user
-      const message = createMessage(`Sorry, I couldn\'t parse \`${args.text}\``, {
-        ephemeral: true
-      })
+      const message = createMessage(`Sorry, I couldn\'t parse \`${args.text}\``)
       return res.json(message)
     }
   })
