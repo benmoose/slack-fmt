@@ -6,7 +6,7 @@ import { CommandType } from '../../common/types'
  */
 export function getRequestCommandType (req: Request): CommandType {
   const text = req.body.text
-  const isHelpCommand = /^help(?!\S)/i.test(text)
+  const isHelpCommand = /^(h|help)$/i.test(text.trim())
   return isHelpCommand ? CommandType.Help : CommandType.Format
 }
 

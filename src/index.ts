@@ -23,5 +23,4 @@ app.use(bodyParser.json())
 app.use('/oauth', routes.oauth)
 app.use('/slash-commands', routes.slashCommands)
 
-// module.exports.handler = serverless(app)
-app.listen(3000)
+module.exports.handler = serverless(app)
