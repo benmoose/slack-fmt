@@ -1,7 +1,7 @@
 # Slack Fmt
 
-> [View on Slack](https://moosesandbox.slack.com/apps/A9QSW4XSB-fmt?page=1)
-or [Install](https://16el4ez0sg.execute-api.eu-west-2.amazonaws.com/dev/oauth/direct-install) to your workspace
+> Note: Fmt on Slack directory is [v0.0.1](https://github.com/benjaminhadfield/slack-fmt/tree/v0.0.1), [view on Slack](https://moosesandbox.slack.com/apps/A9QSW4XSB-fmt?page=1)
+or [install](https://16el4ez0sg.execute-api.eu-west-2.amazonaws.com/dev/oauth/direct-install) to your workspace
 
 **Fmt** is a helpful Slack bot for formatting JSON messages 🙃
 
