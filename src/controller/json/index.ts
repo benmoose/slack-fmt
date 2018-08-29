@@ -1,4 +1,3 @@
-import * as argparse from 'argparse'
 import { Request, Response } from 'express'
 
 import { IFormatter } from '../../common/types'
