@@ -23,4 +23,10 @@ app.use(bodyParser.json())
 app.use('/oauth', routes.oauth)
 app.use('/slash-commands', routes.slashCommands)
 
-module.exports.handler = serverless(app)
+if (process.env.NODE_ENV === 'production') {
+  module.exports.handler = serverless(app)
+} else {
+  app.listen(3000, () => {
+    console.log('server listening on :3000')
+  })
+}
