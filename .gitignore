@@ -17,6 +17,9 @@ pids
 # env files
 .env
 
+# IDE
+.idea/
+
 # serverless compiled packages
 .serverless
 
