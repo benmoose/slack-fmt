@@ -22,6 +22,7 @@ pids
 
 # env files
 .env
+.env.yml
 
 # serverless compiled packages
 .serverless

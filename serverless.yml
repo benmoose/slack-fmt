@@ -15,8 +15,8 @@ provider:
   region: eu-west-2
   environment:
     FMT_SITE_URL: https://fmt.surge.sh
-    SLACK_CLIENT_ID: ${env:SLACK_CLIENT_ID}
-    SLACK_SECRET: ${env:SLACK_SECRET}
+    SLACK_CLIENT_ID: ${file(.env.yml):SLACK_CLIENT_ID}
+    SLACK_SECRET: ${file(.env.yml):SLACK_SECRET}
     SLACK_OAUTH_ACCESS_URL: https://slack.com/api/oauth.access
     SLACK_OAUTH_AUTHORISATION_PAGE: https://slack.com/oauth/authorize
 
