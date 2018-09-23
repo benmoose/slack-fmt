@@ -1,7 +1,7 @@
 import * as mocha from 'mocha'
 import { expect } from 'chai'
 
-import { prepareString, isStrictJson } from './'
+import { prepareString, safeParseStrictJson } from './'
 
 describe('test prepareString', function () {
   it('should strip quotes and whitespace', function () {
@@ -10,17 +10,17 @@ describe('test prepareString', function () {
   })
 })
 
-describe('test isStrictJson', function () {
-  it('should return true if given strict JSON', function () {
+describe('test safeParseStrictJson', function () {
+  it('should return pased JSON if given strict JSON', function () {
     const json = '{"a": [false, true, 6.4, 100, "foo"]}'
-    expect(isStrictJson(json)).to.equal(true)
+    expect(safeParseStrictJson(json)).to.deep.equal(JSON.parse(json))
   })
-  it('should return false if given relaxed JSON', function () {
+  it('should return null if given relaxed JSON', function () {
     const json = 'foo: \'bar\''
-    expect(isStrictJson(json)).to.equal(false)
+    expect(safeParseStrictJson(json)).to.be.null
   })
-  it('should return false if given invalid JSON', function () {
+  it('should return null if given invalid JSON', function () {
     const json = '[&49.o'
-    expect(isStrictJson(json)).to.equal(false)
+    expect(safeParseStrictJson(json)).to.be.null
   })
 })

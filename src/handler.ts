@@ -1,4 +1,4 @@
-const querystring = require('querystring')
+import querystring from 'querystring'
 import formatJson from './functions/format'
 
 export const slashCommand = async (event, context) => {

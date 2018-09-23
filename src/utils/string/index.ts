@@ -19,11 +19,10 @@ export function prepareString (str: string): string {
   return stripQuotes(str.trim())
 }
 
-export function isStrictJson (str: string): boolean {
+export function safeParseStrictJson (str: string): object {
   try {
-    JSON.parse(str)
-    return true
+    return JSON.parse(str)
   } catch {
-    return false
+    return null
   }
 }

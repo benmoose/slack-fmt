@@ -1,15 +1,6 @@
-import { Request, Response } from 'express'
-
-export interface IFormatter {
-  format: (body: object) => object
-}
-
-export interface IController {
-  help: IFormatter,
-  json: IFormatter,
-  oauth
-}
-
+/**
+ * Config for createMessage
+ */
 export interface IMessageConfig {
   ephemeral?: boolean
 }
@@ -21,13 +12,4 @@ export interface IArguments {
   spaces: number,
   type: string,
   text: string
-}
-
-/**
- * Command type
- * @enum {number}
- */
-export enum CommandType {
-  Help,
-  Format
 }

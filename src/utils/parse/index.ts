@@ -1,7 +1,7 @@
 import * as jsonic from 'jsonic'
 
 import { IArguments } from '../../common/types'
-import { isStrictJson } from '../string'
+import { safeParseStrictJson } from '../string'
 
 
 /**
@@ -11,8 +11,9 @@ import { isStrictJson } from '../string'
  */
 export function parseJsonString (str: string): object {
   // attempt strict parse
-  if (isStrictJson(str)) {
-    return JSON.parse(str)
+  const strictJson = safeParseStrictJson(str)
+  if (strictJson !== null || str === 'null') {
+    return strictJson
   }
   // not valid 'strict' JSON, try jsonic
   try {
