@@ -26,9 +26,10 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@types/qs": "^6.5.1",
     "axios": "^0.18.0",
     "jsonic": "^0.3.0",
-    "querystring": "^0.2.0"
+    "qs": "^6.5.2"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
