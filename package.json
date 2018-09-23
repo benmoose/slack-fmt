@@ -11,10 +11,10 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
-    "build": "npm run tsc",
+    "build": "rm -rf dist ; npm run tsc",
     "prepublish": "npm run build",
-    "deploy:prod": "npm run build && sls deploy -v --stage production",
     "deploy:dev": "npm run build && sls deploy -v",
+    "deploy:prod": "npm run build && sls deploy -v --stage production",
     "test": "mocha dist/**/*spec.js"
   },
   "engines": {
