@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 
 export interface IFormatter {
-  format: (req: Request, res: Response) => void
+  format: (body: object) => object
 }
 
 export interface IController {

@@ -9,12 +9,12 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./dist",
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
     "build": "npm run tsc",
     "prepublish": "npm run build",
-    "deploy": "npm run build && sls deploy",
+    "deploy:prod": "npm run build && sls deploy -v --stage production",
+    "deploy:dev": "npm run build && sls deploy -v",
     "test": "mocha dist/**/*spec.js"
   },
   "engines": {
@@ -27,11 +27,9 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
-    "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
-    "express": "^4.16.3",
     "jsonic": "^0.3.0",
-    "serverless-http": "^1.5.3"
+    "querystring": "^0.2.0"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -42,7 +40,6 @@
     "babel-core": "^7.0.0-bridge.0",
     "chai": "^4.1.2",
     "mocha": "^5.0.4",
-    "nodemon": "^1.17.2",
     "typescript": "^2.7.2"
   }
 }

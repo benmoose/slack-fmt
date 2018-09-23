@@ -23,3 +23,11 @@ export function createMessage (msg: string, config: IMessageConfig = {}): object
     response_type: ephemeral ? 'ephemeral' : 'in_channel'
   }
 }
+
+/**
+ * Returns true if `text` is a help command.
+ * @param text string
+ */
+export function isHelpCommand (text) {
+  return /^help(?!\S)/i.test(text)
+}
