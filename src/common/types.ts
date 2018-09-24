@@ -1,4 +1,13 @@
 /**
+ * Handler Resonse
+ */
+export interface IHandlerResponse {
+  statusCode: number,
+  body?: string,
+  headers?: object
+}
+
+/**
  * Config for createMessage
  */
 export interface IMessageConfig {

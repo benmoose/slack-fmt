@@ -1,7 +1,6 @@
 import * as jsonic from 'jsonic'
 
-import { IArguments } from '../../common/types'
-import { safeParseStrictJson } from '../string'
+import { IArguments } from '../../../common/types'
 
 
 /**
@@ -41,3 +40,12 @@ export function parseMessageArgs (msg: string): IArguments {
     text: arg2
   }
 }
+
+export function safeParseStrictJson (str: string): object {
+  try {
+    return JSON.parse(str)
+  } catch {
+    return null
+  }
+}
+

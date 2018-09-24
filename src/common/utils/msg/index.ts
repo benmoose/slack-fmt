@@ -1,4 +1,4 @@
-import { IMessageConfig } from '../../common/types'
+import { IMessageConfig } from '../../../common/types'
 
 /**
  * Prepares a string for sending to Slack.

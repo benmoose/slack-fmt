@@ -1,6 +1,6 @@
-import { prepareString } from '../utils/string'
-import { parseJsonString, parseMessageArgs } from '../utils/parse'
-import { createMessage, formatAsCodeBlock, isHelpCommand } from '../utils/msg'
+import { prepareString } from '../common/utils/string'
+import { parseJsonString, parseMessageArgs } from '../common/utils/parse'
+import { createMessage, formatAsCodeBlock, isHelpCommand } from '../common/utils/msg'
 
 /**
  * Format JSON from event body
