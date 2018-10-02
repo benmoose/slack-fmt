@@ -5,7 +5,6 @@ import { createMessage, formatAsCodeBlock, isHelpCommand } from '../common/utils
  * Format JSON from event body
  */
 export const formatJson = (body) => {
-  // parse arguments from the incoming string
   const args = parseMessageArgs(body.text)
   if (isHelpCommand(args.text)) {
     return helpMessage
