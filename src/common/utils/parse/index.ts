@@ -30,7 +30,7 @@ export function parseMessageArgs (msg: string): IArguments {
   // arg1 -> spaces
   const arg1 = msg.match(/^\d+/)
   // arg2 -> text to format
-  const arg2 = msg.replace(/^\d+\s*/, '')
+  const arg2 = msg.replace(/^\d+\s*/, '').trim()
   // format arg1 as a number if it exists
   const spaces = arg1 ? parseInt(arg1[0]) : 2
 
