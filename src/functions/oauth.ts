@@ -1,4 +1,3 @@
-const assert = require('assert')
 import { URL } from 'url'
 import { stringify } from 'qs'
 
