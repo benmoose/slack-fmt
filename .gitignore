@@ -22,7 +22,9 @@ pids
 
 # env files
 .env
-.env.yml
+
+# Slack config
+slack-config*.yml
 
 # serverless compiled packages
 .serverless

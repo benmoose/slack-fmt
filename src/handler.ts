@@ -1,9 +1,11 @@
 import { parse } from 'qs'
-import axios from 'axios'
 
 import { IHandlerResponse } from './common/types'
+import { getServiceEndpoint } from './common/utils/event'
 import { formatJson } from './functions/format'
 import { getDirectInstallUrl, getAccessTokenFromCode } from './functions/oauth'
+
+const getRedirectUrlFromEvent = event => `${getServiceEndpoint(event)}/oauth/authorise`
 
 export const slashCommand = async (event, context): Promise<IHandlerResponse> => {
   const body = parse(event.body)
@@ -16,9 +18,10 @@ export const slashCommand = async (event, context): Promise<IHandlerResponse> =>
 
 export const authorise = async (event, content): Promise<IHandlerResponse> => {
   const code = event.queryStringParameters.code
+  const redirectUrl = getRedirectUrlFromEvent(event)
   console.info(`Authorising from code: ${code}`)
 
-  const accessToken = await getAccessTokenFromCode(code)
+  const accessToken = await getAccessTokenFromCode(code, redirectUrl)
   if (!accessToken) {
     return {
       statusCode: 200,
@@ -33,7 +36,9 @@ export const authorise = async (event, content): Promise<IHandlerResponse> => {
 }
 
 export const directInstall = async (event, context): Promise<IHandlerResponse> => {
-  const directInstallUrl = getDirectInstallUrl()
+  const redirectUrl = getRedirectUrlFromEvent(event)
+  const directInstallUrl = getDirectInstallUrl(redirectUrl)
+
   console.info(`redirecting to ${directInstallUrl}`)
   return {
     statusCode: 302,

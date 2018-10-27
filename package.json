@@ -14,7 +14,7 @@
     "build": "rm -rf dist ; npm run tsc",
     "prepare": "npm run build",
     "deploy:dev": "npm run build && sls deploy -v",
-    "deploy:prod": "npm run build && sls deploy -v --stage production",
+    "deploy:prod": "npm run build && sls deploy -v --stage prod",
     "test": "mocha dist/**/*spec.js"
   },
   "engines": {

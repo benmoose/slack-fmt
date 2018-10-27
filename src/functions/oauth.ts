@@ -2,20 +2,20 @@ import axios from 'axios'
 import { stringify } from 'qs'
 import { URL } from 'url'
 
-export const getDirectInstallUrl = () => {
+export const getDirectInstallUrl = (redirectUrl) => {
   const qs = stringify({
     client_id: process.env.SLACK_CLIENT_ID,
+    redirect_uri: redirectUrl,
     scope: 'commands',
-    redirect_uri: `${process.env.SERVICE_ENDPOINT}/oauth/authorise`,
   })
   return new URL(`${process.env.SLACK_OAUTH_AUTHORISATION_PAGE}?${qs}`).href
 }
 
-export const getAccessTokenFromCode = (code) => {
+export const getAccessTokenFromCode = (code, redirectUrl) => {
   const data = {
     client_id: process.env.SLACK_CLIENT_ID,
     client_secret: process.env.SLACK_CLIENT_SECRET,
-    redirect_uri: `${process.env.SERVICE_ENDPOINT}/oauth/authorise`,
+    redirect_uri: redirectUrl,
     code,
   }
 
