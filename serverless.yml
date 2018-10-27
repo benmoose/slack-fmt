@@ -4,7 +4,7 @@ package:
   exclude:
     - mocks/**
     - src/**
-    - dist/**/spec.js
+    - dist/**/spec.ts
     - tsconfig.json
 
 provider:
@@ -15,16 +15,23 @@ provider:
   region: eu-west-2
   environment:
     FMT_SITE_URL: https://fmt.surge.sh
+    FMT_SUCCESS_LANDING_PAGE: https://fmt.surge.sh/success/
     SLACK_CLIENT_ID: ${file(.env.yml):SLACK_CLIENT_ID}
-    SLACK_SECRET: ${file(.env.yml):SLACK_SECRET}
+    SLACK_CLIENT_SECRET: ${file(.env.yml):SLACK_SECRET}
     SLACK_OAUTH_ACCESS_URL: https://slack.com/api/oauth.access
     SLACK_OAUTH_AUTHORISATION_PAGE: https://slack.com/oauth/authorize
+    SERVICE_ENDPOINT: https://jaknaccns7.execute-api.eu-west-2.amazonaws.com/dev
 
 functions:
   slashCommand:
     handler: handler.slashCommand
     events:
       - http: POST slash-command
+
+  authorise:
+    handler: handler.authorise
+    events:
+      - http: GET oauth/authorise
 
   directInstall:
     handler: handler.directInstall
