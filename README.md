@@ -49,7 +49,7 @@ By default **Fmt** will indent with two spaces. To change this, just enter the n
 
 **Fmt** can also handle relaxed JSON, thanks to the [jsonic](https://github.com/rjrodger/jsonic) library.
 
-You can find the rules for relaxed JSON [here](https://github.com/rjrodger/jsonic), but they are repeated below too.
+You can find the rules for relaxed JSON [here](https://github.com/rjrodger/jsonic#relaxed-rules), but they are repeated below too.
 
   * You don't need to quote property names: `{ foo:"bar baz", red:255 }`
   * You don't need the top level braces: `foo:"bar baz", red:255`
